@@ -21,10 +21,10 @@ def marelab():
 
 def mercancia_update():
 
-    doc_ref = firestore_db.collection(u'Mercancia').document(''++Datos')
+    doc_ref = firestore_db.collection(u'Mercancia').document(u'Datos2')
     doc_ref.set({
         u'Naturaleza_de_carga':u'ligero',
-        u'Tipo_de_vehiculo': u'automovil',
+        u'Tipo_de_vehiculo': u'camion',
         })
 
 def query_simple():
@@ -35,11 +35,11 @@ def query_simple():
 
 def query_compleja():
 
-    documentos = firestore_db.collection(u'Mercancia').where(u'Tipo_de_vehiculo',u'==','automovil')
+    documentos = firestore_db.collection(u'Mercancia').where(u'Tipo_de_vehiculo',u'==','camion')
     for datos in documentos.stream():
         print(f'{datos.id} => {datos.to_dict()}') 
 
-#mercancia_update()
+mercancia_update()
 
 #query_simple()
 query_compleja()
